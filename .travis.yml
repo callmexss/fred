@@ -27,10 +27,9 @@ before_install:
   - echo -e "org.gradle.parallel = true\norg.gradle.jvmargs=-Xms256m -Xmx1024m\norg.gradle.configureondemand=true\ntasks.withType(Test) {\n maxParallelForks = Runtime.runtime.availableProcessors()\n}" > gradle.properties
 
 jdk:
-  - oraclejdk8
-  - oraclejdk7
   - openjdk7
 
+install: true
 script: if [ ${COVERITY_SCAN_BRANCH} != 1 ]; then ./gradlew check ; fi
 
 before_deploy:
@@ -50,8 +49,5 @@ addons:
       name: "freenet/fred"
       description: "Build submitted via Travis CI"
     notification_email: steve@asksteved.com
-    build_command:   "./gradlew compileJava compileTestJava"
+    build_command: "./gradlew compileJava compileTestJava"
     branch_pattern: coverity_scan
-    on:
-      branch: coverity_scan
-      jdk: oraclejdk7
