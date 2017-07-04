@@ -7,7 +7,7 @@ env:
     - secure: "LSKpQC1/2WdZRVV2RsIakAsPiC5fsusKtPwRl1XMviMyg3KAQYvHsr6wU7VwjRKcgeUxtNBiaHJ3nZTjciVzo1d2T012VPtpxp30JfvzBSBqm+HJ4pIs7aaXTT3gg8v0YA6yerT9LgJNgQlf7G6f2PRXhGFWP960CHkACRhOwbA="
 
 before_install:
-      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-certificates.crt
 
 jdk:
   - openjdk7
